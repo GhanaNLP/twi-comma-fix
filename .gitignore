@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.parquet
+*.jsonl
+*.wav
+*.bin
+*.onnx
+.cache/
+tmp/
+.env

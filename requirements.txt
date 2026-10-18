@@ -1,0 +1,11 @@
+torch>=2.2.0
+transformers>=4.44.0
+tokenizers>=0.20.0
+onnxruntime>=1.18.0
+datasets>=2.20.0
+soundfile>=0.12.0
+huggingface_hub>=0.24.0
+modal>=0.64.0
+gradio>=5.0.0
+numpy>=1.24.0
+scikit-learn>=1.4.0
