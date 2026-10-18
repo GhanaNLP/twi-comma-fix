@@ -103,13 +103,12 @@ custom_css = """
 
 with gr.Blocks(title="Twi Punctuation & Capitalization Restorer", css=custom_css) as demo:
     gr.Markdown(
-        """
-        # ✍️ Twi Punctuation & Capitalization Restorer
+        """        # ✍️ Twi Punctuation & Capitalization Restorer
         Restore **commas**, **sentence-ending periods**, and **proper capitalization** (Title Case, ALL CAPS) in Akan/Twi text.
         
-        * **Target Use-Cases:** ASR / Speech-to-Text transcript formatting, messy web corpus cleaning, conversational transcription.
-        * **Model:** Fine-tuned `Ghana-NLP/distilabena-base-v2-akuapem-twi-cased` running on **quantized INT8 ONNX** (~15–30 ms CPU latency).
-        """
+        * **Why this matters for Text-to-Speech (TTS):** Commas are routinely omitted when writing Twi, despite their clear presence as pauses in normal spoken Twi. This model compensates for these conventionally ignored commas, enabling natural breath pauses and prosody for TTS engines.
+        * **Target Use-Cases:** Text-to-Speech (TTS) script pre-processing, ASR / Speech-to-Text transcript formatting, and conversational text cleaning.
+        * **Model:** Fine-tuned `Ghana-NLP/distilabena-base-v2-akuapem-twi-cased` running on **quantized INT8 ONNX** (~15–28 ms CPU latency)."""
     )
 
     with gr.Row():
