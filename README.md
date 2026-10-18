@@ -14,6 +14,13 @@ Developed by **Ghana NLP** & **Ghana OpenAI**.
 
 When processing Akan/Twi audio (e.g. from Automatic Speech Recognition or Text-to-Speech datasets like [ghanaopenai/twi-zephyr-synthetic-speech](https://huggingface.co/datasets/ghanaopenai/twi-zephyr-synthetic-speech)), speech audio contains natural pauses (e.g. at clause boundaries, list items, and parentheticals) that are frequently missing from transcript texts.
 
+### Why This Matters: Bridging Written Twi and Spoken Twi for TTS
+
+A major challenge in Akan/Twi NLP and Speech Synthesis is that **commas are routinely omitted in written Twi**, even though they represent essential, audible pauses in normal spoken Twi:
+* **Written Orthography Habit:** Writers frequently skip commas before conjunctions (like `ne`, `anaa`), complementizers (`sɛ`), appositives, and compound titles.
+* **The TTS Bottleneck:** For **Text-to-Speech (TTS)** models, punctuation is the primary signal for breath and prosodic phrase boundaries. When Twi text lacks commas, TTS engines either rush through sentences unnaturally or misplace syllable stress.
+* **Acoustic Grounding:** By detecting true acoustic pauses ($\ge 350$ ms) with forced alignment, this model **systematically compensates for commas that are conventionally ignored in writing**, ensuring transcripts accurately reflect the prosody of natural spoken Twi.
+
 This repository provides:
 1. **Acoustic Pause Alignment Pipeline (`data/run_audio_pause_alignment.py`)**: Uses Meta's Massively Multilingual Speech (MMS) Forced Aligner on Modal to align synthesized speech audio with text at the word level, detecting pauses ($\ge 350$ms) and inserting commas into parallel text columns.
 2. **Multi-Task Restoration Model (`training/train_model.py`)**: Fine-tunes `Ghana-NLP/distilabena-base-v2-akuapem-twi-cased` with dual heads for simultaneous **Capitalization** (3 classes) and **Punctuation** (5 classes: commas, periods, question marks, exclamations).
